@@ -2,8 +2,6 @@
 
 **Zone 13** is a tactical horror shooter built in **Godot 4**, set in a cold, decayed military quarantine zone. The focus is on atmospheric dread, immersive navigation, and tactical survival in an abandoned area filled with secrets.
 
-![Foggy Start](assets/screenshots/screenshot1.png)
-
 ---
 
 ## 🧠 Concept
@@ -15,8 +13,6 @@ You are a lone soldier sent to investigate a dead zone where communication has c
 - 🌫️ Heavy fog and flashlight-based visibility
 - 🏚️ Retro, green-tinted military decay aesthetic
 
-![Misty Perspective](assets/screenshots/screenshot3.png)
-
 ---
 
 ## 🛠 Current Progress
@@ -26,8 +22,6 @@ You are a lone soldier sent to investigate a dead zone where communication has c
 - ✅ Dynamic prop scatter system (rocks, assets)
 - ✅ Basic player controller + flashlight setup
 - ✅ Environmental lighting and fog tuned for fear
-
-![Military Structures](assets/screenshots/screenshot5.png)
 
 ---
 
@@ -76,13 +70,5 @@ You are a lone soldier sent to investigate a dead zone where communication has c
 Every commit pushes development forward like a military report. Expect **progress snapshots**, **design breakdowns**, and even **in-universe logs** in the near future.
 
 > "Stay in the light. Or don't — and meet what waits in the fog."
-
----
-
-## 📸 Screenshots
-
-| Fog and Flashlight | Military Structures | Road to Unknown | Forest & Fog |
-|--------------------|---------------------|------------------|---------------|
-| ![](assets/screenshots/screenshot1.png) | ![](assets/screenshots/screenshot5.png) | ![](assets/screenshots/screenshot3.png) | ![](assets/screenshots/screenshot4.png) |
 
 ---
