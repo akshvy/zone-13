@@ -39,7 +39,6 @@ fog_mode = 1
 fog_light_color = Color(0.0431373, 0.0431373, 0.0392157, 1)
 fog_density = 1.0
 fog_depth_end = 150.0
-volumetric_fog_enabled = true
 volumetric_fog_density = 0.1
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7dm0k"]
@@ -58,7 +57,6 @@ center_offset = Vector3(20, 1, 20)
 size = Vector3(100, 1, 100)
 
 [node name="Main" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2445, 85.174, 24.7832)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_0xm2m")
@@ -209,7 +207,7 @@ transform = Transform3D(15, 0, 0, 0, 15, 0, 0, 0, 15, -16.529, -2.773, 13.086)
 transform = Transform3D(5, 0, 0, 0, 5, 0, 0, 0, 5, -22.618, -0.7481, 7.269)
 
 [node name="grass8" parent="." instance=ExtResource("10_jkdf5")]
-transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -24.7292, -0.00872803, 4.51322)
+transform = Transform3D(3, 0.00204403, 0.00400819, -0.00203293, 2.99999, -0.00828282, -0.00401383, 0.00828009, 2.99999, -24.7292, -0.00872803, 4.51322)
 
 [node name="grass9" parent="." instance=ExtResource("10_jkdf5")]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -27.1764, -0.342484, 2.76936)
@@ -246,9 +244,6 @@ transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 38.6462, -4.26402, -16.362
 
 [node name="building-archery2" parent="." instance=ExtResource("29_7k868")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 43.1372, -4.42296, 3.23938)
-
-[node name="grass-forest3" parent="." instance=ExtResource("8_6iyac")]
-transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 23.1166, -3.79108, -7.71496)
 
 [node name="grass-forest4" parent="." instance=ExtResource("8_6iyac")]
 transform = Transform3D(25, 0, 0, 0, 25, 0, 0, 0, 25, 17.5624, -4.3136, -20.0127)
