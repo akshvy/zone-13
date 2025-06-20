@@ -1,16 +1,20 @@
 extends CharacterBody3D
 
 @export var speed: float = 5.0
+@export var crouch_speed: float = 2.5
+@export var jump_force: float = 10.0
 @export var gravity: float = -24.8
 @export var mouse_sensitivity: float = 0.3
 
-var yaw: float = 0.0    # Left/Right rotation
-var pitch: float = 0.0  # Up/Down rotation
+var yaw: float = 0.0
+var pitch: float = 0.0
+var is_crouching: bool = false
 
 @onready var head: Node3D = $Head
+@onready var camera: Camera3D = $Head/Camera3D
+@onready var flashlight: SpotLight3D = $Head/Flashlight
 
 func _ready() -> void:
-	# Lock the mouse to the center and hide it
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -19,8 +23,14 @@ func _unhandled_input(event: InputEvent) -> void:
 		pitch -= event.relative.y * mouse_sensitivity
 		pitch = clamp(pitch, -90, 90)
 
-		rotation_degrees.y = yaw               # rotate body (left/right)
-		head.rotation_degrees.x = pitch       # rotate head (up/down)
+		rotation_degrees.y = yaw
+		head.rotation_degrees.x = pitch
+
+	if event.is_action_pressed("Flashlight"):
+		flashlight.visible = !flashlight.visible
+
+	if event.is_action_pressed("crouch"):
+		is_crouching = !is_crouching
 
 func _physics_process(delta: float) -> void:
 	var input_dir = Vector3.ZERO
@@ -35,17 +45,25 @@ func _physics_process(delta: float) -> void:
 		input_dir.x += 1
 
 	input_dir = input_dir.normalized()
+	var move_dir = (transform.basis * input_dir).normalized()
 
-	# Rotate input direction based on where player is looking
-	var direction = (transform.basis * input_dir).normalized()
-
-	velocity.x = direction.x * speed
-	velocity.z = direction.z * speed
-
-	# Apply gravity
-	if not is_on_floor():
-		velocity.y += gravity * delta
+	# Choose correct speed
+	var current_speed: float
+	if is_crouching:
+		current_speed = crouch_speed
 	else:
-		velocity.y = 0.0
+		current_speed = speed
+
+	velocity.x = move_dir.x * current_speed
+	velocity.z = move_dir.z * current_speed
+
+	# Apply gravity and jump
+	if is_on_floor():
+		if Input.is_action_just_pressed("jump"):
+			velocity.y = jump_force
+		else:
+			velocity.y = 0.0
+	else:
+		velocity.y += gravity * delta
 
 	move_and_slide()
